@@ -1,0 +1,221 @@
+fitness[n] = (creature.alive + creature.turn/90) * (creature.size + 1)* (creature.size + 1) * (creature.enemy_eats)
+first parent = largest ; second parent = second largest
+structured crossover ([:;:;0] is from parent[largest], the rest uniform random crossover)
+
+    Red 79/82/85/77/85
+    randomPlayer avg_fitness:  4.25e+01
+    Min: 00
+    Max: 76
+    First: 30
+    Last: 42
+    myAgent avg_fitness:  2.86e+01
+    Min: 00
+    Max: 77
+    First: 00
+    Last: 28
+
+    Red 1/3/2/1/2
+    randomPlayer avg_fitness:  3.95e+01
+    Min: 7.60
+    Max: 58.61
+    First: 31.79
+    Last: 39.45
+    myAgent avg_fitness:  8.82e+00
+    Min: 0.00
+    Max: 37.88
+    First: 0.00
+    Last: 8.82
+
+    Red 83/95/94/98/94
+    randomPlayer avg_fitness:  2.65e+01
+    Min: 0.00
+    Max: 93.61
+    First: 32.91
+    Last: 26.51
+    myAgent avg_fitness:  3.24e+01
+    Min: 1.92
+    Max: 91.80
+    First: 1.92
+    Last: 32.44
+
+    Red 28/39/41/31/27
+    randomPlayer avg_fitness:  3.38e+01
+    Min: 2.46
+    Max: 79.94
+    First: 16.76
+    Last: 33.77
+    myAgent avg_fitness:  3.04e+01
+    Min: 0.00
+    Max: 139.15
+    First: 2.24
+    Last: 30.38
+
+    Red 32/37/33/41/33
+    randomPlayer avg_fitness:  1.33e+01
+    Min: 1.20
+    Max: 102.33
+    First: 21.61
+    Last: 13.29
+    myAgent avg_fitness:  1.50e+01
+    Min: 0.00
+    Max: 109.41
+    First: 0.00
+    Last: 14.96
+
+#################################################################
+fitness[n] = (creature.alive + creature.turn/90) * (creature.size + 1)* (creature.size + 1) * (creature.enemy_eats)
+first parent = largest ; second parent = RANDOM
+        => (+) preserve some less successful parents, while still prioritise the largest parent
+structured crossover ([:;:;0] is from parent[largest], the rest uniform random crossover)
+        => (-) not truly learning, due to structured crossover
+
+    Red 60/72/68/73/72                          -> wave shape, overall increased in number of game won, small peak 2, large peak 4
+    randomPlayer avg_fitness:  1.85e+01
+    myAgent avg_fitness:  2.79e+01
+    Min: 1.12                   <   Min: 2.24   -> evident of outperformance
+    Max: 59.98                  <   Max: 70.57
+    First: 19.37                >   First: 19.19-> evident of learning: first is less (by small) but last is more(by large)
+    Last: 18.53                 <   Last: 27.88
+
+    Red 52/47/53/57/50                          -> wave shape, overall decreased in number of game won, small peak 1, large peak 4
+    randomPlayer avg_fitness:  3.45e+00
+    myAgent avg_fitness:  2.14e+01
+    Min: 1.45                   >   Min: 0.00
+    Max: 103.01                 <   Max: 112.39
+    First: 21.92                >   First: 3.35 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 3.45                  <   Last: 21.36
+
+    Red 44/49/48/50/42                          -> wave shape, overall decreased in number of game won, small peak 2, large peak 4
+                                                -> especially bad in the last 100 rounds => lost of gene??
+    randomPlayer avg_fitness:  2.69e+01
+    myAgent avg_fitness:  1.27e+01
+    Min: 0.00                   <   Min: 0.33   
+    Max: 46.88                  <   Max: 48.25
+    First: 28.56                >   First: 8.63
+    Last: 26.95                 >   Last: 12.65
+
+    Red 47/72/58/60/65                          -> wave shape, SIG. increase in number of game won, large peak 2, small peak 5
+    randomPlayer avg_fitness:  1.12e+01
+    myAgent avg_fitness:  2.83e+01
+    Min: 1.12                   >   Min: 0.00
+    Max: 82.71                  <   Max: 91.40
+    First: 23.84                >   First: 1.12 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 11.18                 <   Last: 28.25
+
+    Red 76/76/82/79/77                          -> bell shape, overall increase in number of game won, peak in the middle 3
+    randomPlayer avg_fitness:  4.28e+01
+    myAgent avg_fitness:  2.53e+01
+    Min: 0.84                   <   Min: 2.24   -> evident of outperformance
+    Max: 101.33                 <   Max: 131.19
+    First: 35.14                >   First: 6.95
+    Last: 42.84                 >   Last: 25.30
+
+
+    Red 87/98/100/99/99                         -> bell shape, overall increase in number of game won, peak in the middle 3
+                                                -> good gene detected and preserved
+    randomPlayer avg_fitness:  1.35e+00
+    myAgent avg_fitness:  4.89e+01
+    Min: 0.00                   =   Min: 0.00
+    Max: 117.15                 <   Max: 127.24
+    First: 29.93                >   First: 1.12 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 1.35                  <   Last: 48.93
+
+    Red 32/41/39/40/45                          -> wave shape, overall increase in number of game won, small peak 2, large peak 5
+                                                -> best model of learning
+    randomPlayer avg_fitness:  8.24e+00
+    myAgent avg_fitness:  3.22e+01
+    Min: 1.52                   >   Min: 0.00
+    Max: 64.92                  <   Max: 61.47
+    First: 29.93                >   First: 3.35 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 8.24                  <   Last: 32.19
+
+    Red 81/94/97/95/92                         -> bell shape, overall increase in number of game won, peak in the middle 3
+    randomPlayer avg_fitness:  1.95e+00
+    myAgent avg_fitness:  6.70e+01
+    Min: 0.00                   =   Min: 0.00
+    Max: 107.98                 <   Max: 121.35
+    First: 28.31                >   First: 1.12 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 1.95                  <   Last: 67.00
+
+    Red 85/98/94/97/94                          -> wave shape, overall increase in number of game won, large peak 2, small peak 4
+    randomPlayer avg_fitness:  9.47e+00
+    myAgent avg_fitness:  7.28e+01
+    Min: 0.00                   <   Min: 4.47
+    Max: 103.38                 <   Max: 135.23
+    First: 19.74                <   First: 20.86
+    Last: 9.47                  <   Last: 72.83
+
+    Red 59/50/51/41/49                          -> wave shape, overall increase in number of game won, large peak 1, small peak 5
+    randomPlayer avg_fitness:  2.35e+01
+    myAgent avg_fitness:  3.26e+01
+    Min: 1.40                   >   Min: 1.12
+    Max: 68.95                  <   Max: 98.54
+    First: 16.27                >   First: 1.12 -> evident of learning: first is less (by large) but last is more (by large)
+    Last: 23.48                 <   Last: 32.62
+
+
+=> moderately good detection of good gene -> moderately good fitness function
+=> mostly wave and bell shape -> bad preservation of good gene
+                                    OR error in elitism and fitness model?
+=> moderate overall learning -> do have learning aspect
+
+#################################################################
+fitness[n] = (creature.alive + creature.turn/90) * (creature.size + 1)* (creature.size + 1) * (creature.enemy_eats)
+first parent = largest ; second parent = RANDOM
+cross over by sheets ([:;:;0-3] is copied from parents RANDOM)
+        => (-) potential lost of the largest parent gene
+                =>  should be copied by random then alternation, rather than completely random
+
+    Red 52/55/45/58/57
+    randomPlayer avg_fitness:  4.81e+01
+    Min: 1.54
+    Max: 129.28
+    First: 38.37
+    Last: 48.06
+    myAgent avg_fitness:  1.96e+01
+    Min: 0.00
+    Max: 113.63
+    First: 0.00
+    Last: 19.64
+
+    Red 5/6/4/0/4
+    randomPlayer avg_fitness:  2.86e+01
+    Min: 10.06
+    Max: 75.69
+    First: 26.45
+    Last: 28.62
+    myAgent avg_fitness:  8.20e+00
+    Min: 0.00
+    Max: 48.43
+    First: 0.00
+    Last: 8.20
+
+    Red 74/77/79/76/72
+    randomPlayer avg_fitness:  2.15e+01
+    Min: 1.69
+    Max: 84.44
+    First: 11.80
+    Last: 21.47
+    myAgent avg_fitness:  3.02e+01
+    Min: 1.12
+    Max: 138.28
+    First: 6.71
+    Last: 30.18
+
+    Red 51/67/71/65/63
+    randomPlayer avg_fitness:  3.05e+01
+    Min: 2.14
+    Max: 94.82
+    First: 25.67
+    Last: 30.52
+    myAgent avg_fitness:  5.08e+01
+    Min: 0.00
+    Max: 145.02
+    First: 8.94
+    Last: 50.78
+
+    Red 54/79/64/74/89
+    Red 12/59/91/93/95
+
+    Red:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Blue:  [17, 12, 16, 25, 31, 27, 18, 19, 16, 28, 51, 39, 52, 62, 59, 54, 39]
